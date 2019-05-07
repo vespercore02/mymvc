@@ -6,7 +6,7 @@ class Database{
     private $host = "localhost";
     private $db_name = "mvc_crud";
     private $username = "root";
-    private $password = "root";
+    private $password = "";
     public $conn;
   
     // get the database connection

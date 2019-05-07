@@ -37,6 +37,24 @@ class Account {
             return false;
         }
     }
+
+    public function View()
+    {
+        $query = "Select * from 
+                    ". $this->table_name ."
+                   where 
+                    id=:id";
+
+        $stmt = $this->conn->prepare($query);
+
+        $this->id=htmlspecialchars(strip_tags($this->id));
+
+        $stmt->bindParam(":id", $this->id);
+
+        $success = $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $rows: [];
+    }
 }
 
 
