@@ -3,10 +3,10 @@
 class Database{
   
     // specify your own database credentials
-    private $host = "localhost";
+    private $host = "mvc-mariadb";
     private $db_name = "mvc_crud";
-    private $username = "root";
-    private $password = "";
+    private $username = "mvc";
+    private $password = "mvc";
     public $conn;
   
     // get the database connection
