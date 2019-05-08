@@ -8,3 +8,16 @@ services:
       - ./app:/app
     ports:
       - "80:80"
+  mariadb:
+    image: mariadb:10.4
+    container_name: mvc-mariadb
+    working_dir: /application
+    volumes:
+      - ./db:/application
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mvc_crud
+      - MYSQL_USER=mvc
+      - MYSQL_PASSWORD=mvc
+    ports:
+      - "1028:3306"
