@@ -22,7 +22,7 @@ class Router
              * 
              */
 
-            require 'Views/home.php';
+            require 'views/home.php';
 
         }else{
             
