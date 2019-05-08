@@ -14,7 +14,7 @@ class Controller {
 
     public function loadView($view, $data){
 
-        require 'views/'.$view.'.php';
+        require './Views/'.$view.'.php';
 
         if (!empty($data)) {
             # code...

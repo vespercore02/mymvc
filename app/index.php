@@ -1,8 +1,8 @@
 <?php
 
 require 'router.php';
-require 'Resources/config/config.php';
 require 'Controllers/controller.php';
+require 'Models/database.php';
 require 'Models/account.php';
 
 $database = new Database();
@@ -16,5 +16,6 @@ $db = $database->getConnection();
 $router = new Router($db);
 $router->index();
 
+//echo "<br>".$_SERVER['REQUEST_URI'];
 
 ?>
