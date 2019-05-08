@@ -10,7 +10,7 @@
             }
 
         ?>
-        <form action="registry" method="post">
+        <form action="../index.php" method="post">
             <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-10">
