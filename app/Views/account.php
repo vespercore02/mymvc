@@ -1,1 +1,1 @@
-This is account <?php echo $data; ?>
+This is account 

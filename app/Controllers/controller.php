@@ -2,24 +2,60 @@
 
 class Controller {
     private $db;
-    public function __construct($db) {
+    public function __construct(Database $db) {
         $this->db = $db;
     }
     
-    /**
-     * 
-     * loadView(view, data)
-     * 
-     */
-
     public function loadView($view, $data){
 
-        require 'views/'.$view.'.php';
+<<<<<<< HEAD
+        $file = 'views/'.$view.'.php';
+=======
+        require './Views/'.$view.'.php';
+>>>>>>> 35d5bb927a69a2dbacbc56c6ebfde24f3d25b769
 
-        if (!empty($data)) {
+        if (file_exists($file)) {
             # code...
+
+            $get = new Account($this->db);
+            
+            if (!empty($data)) {
+                # code...
+                
+                switch ($view) {
+                    case 'Account':
+                        # code...
+                        /**
+                         * 
+                         * @var trying to get the info from database
+                         * 
+                         * 
+                         */
+                        $get->id = $data;
+
+                        print_r($data); 
+                        
+                        echo Account::view();
+
+                        break;
                     
+                    default:
+                        # code...
+                        break;
+                }
+            }
+
+            
+        }else {
+            # code...
+
+            $view = "error";
         }
+
+        return 'views/'.$view.'.php';
+        
+
+
 
     }
 

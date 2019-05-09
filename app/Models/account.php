@@ -38,7 +38,7 @@ class Account {
         }
     }
 
-    public function View()
+    public function view()
     {
         $query = "Select * from 
                     ". $this->table_name ."

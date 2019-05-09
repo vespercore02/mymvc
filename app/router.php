@@ -3,40 +3,46 @@
 
 class Router
 {
+    
     private $db;
+
     public function __construct($db) {
         $this->db = $db;
     }
 
-    public function index()
+
+    public function loadPage()
     {
-        $url = isset($_GET['url']) ? $_GET['url'] : null;
-        $url = rtrim($url, "/");
-        $url = explode("/", $url);
+        $page = $_SERVER['REQUEST_URI'];
         
-        if(empty($url[0])){
-
-            /**
-             * 
-             * When url[0] is empty it will call home
-             * 
-             */
-
-            require './Views/home.php';
-
-        }else{
+        $uri = trim($page, "/");
+        $uri = explode("/", $uri);
+        
+        if (empty($uri[1])) {
+            # code...
             
-            if (isset($url[1])) {
+            Controller::loadView("home", 0);
+            
+
+        } else {
+
+            if (isset($uri[2])) {
                 # code...
-                Controller::loadView($url[0], $url[1]);
+                
+                $this->db->loadView($uri[1], $uri[2]);
+
+            }elseif($uri[1]){
+                # code...
+                
+                Controller::loadView($uri[1], 0);
+                
             } else {
                 # code...
-                Controller::loadView($url[0], 0);
-            }
-            
-        }
 
-        
+                Controller::loadView($uri[0], 0);
+
+            }
+        }
     }
 
 }
