@@ -15,7 +15,6 @@ $db = $database->getConnection();
  * 
  */
 
-//echo "<br>".$_SERVER['REQUEST_URI'];
 
 $page = new Router($db);
 

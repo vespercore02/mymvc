@@ -8,11 +8,7 @@ class Controller {
     
     public function loadView($view, $data){
 
-<<<<<<< HEAD
         $file = 'views/'.$view.'.php';
-=======
-        require './Views/'.$view.'.php';
->>>>>>> 35d5bb927a69a2dbacbc56c6ebfde24f3d25b769
 
         if (file_exists($file)) {
             # code...
