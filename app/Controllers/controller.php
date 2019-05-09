@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * @package construct db connection from Database
+ * 
+ * @param $view to look up on the views folder
+ * @param $data to where data reference to look on the database
+ * 
+ * @param Account view() to echo the data from account model
+ * 
+ */
+
 class Controller {
     private $db;
     public function __construct(Database $db) {
@@ -30,7 +40,7 @@ class Controller {
                         $get->id = $data;
 
                         print_r($data); 
-                        
+                        //print_r($get->view());
                         echo Account::view();
 
                         break;
@@ -48,7 +58,7 @@ class Controller {
             $view = "error";
         }
 
-        return 'views/'.$view.'.php';
+        require 'views/'.$view.'.php';
         
 
 
