@@ -1,0 +1,20 @@
+{
+  "name": "vespercore02/mymvc",
+  "description": "VesperCore's First MVC",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Wil Lem",
+      "email": "email@example.com"
+    },
+    {
+      "name": "Matt Wiseman",
+      "email": "trollboy@shoggoth.net"
+    }
+  ],
+  "require": {
+    "vlucas/phpdotenv": "1.0.6",
+    "phpunit/phpunit": "8.1.3"
+  }
+}
