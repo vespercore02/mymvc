@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
-
 require 'router.php';
 require 'Controllers/controller.php';
 require 'Models/database.php';
@@ -16,8 +14,6 @@ $db = $database->getConnection();
  * @var $page will check on @package Router
  * 
  */
-
-
 $page = new Router($db);
 
 $page->loadPage();

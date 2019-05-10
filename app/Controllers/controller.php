@@ -11,8 +11,10 @@
  */
 
 class Controller {
+
     private $db;
-    public function __construct(Database $db) {
+
+    public function __construct( $db) {
         $this->db = $db;
     }
     
@@ -20,10 +22,12 @@ class Controller {
 
         $file = 'views/'.$view.'.php';
 
+        //var_dump($conn);
+
         if (file_exists($file)) {
             # code...
 
-            $get = new Account($this->db);
+            //$get = new Account($this->db);
             
             if (!empty($data)) {
                 # code...
@@ -31,20 +35,13 @@ class Controller {
                 switch ($view) {
                     case 'Account':
                         # code...
-                        /**
-                         * 
-                         * @var trying to get the info from database
-                         * 
-                         * 
-                         */
-                        $get->id = $data;
 
-                        print_r($data); 
-                        //print_r($get->view());
-                        echo Account::view();
+                        $account = new Account($this->db);
+                        $account->id = $data;
+                        $account->view();
 
                         break;
-                    
+
                     default:
                         # code...
                         break;

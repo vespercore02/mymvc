@@ -43,7 +43,7 @@ class Account {
         $query = "Select * from 
                     ". $this->table_name ."
                    where 
-                    id=:id";
+                    account_id=:id";
 
         $stmt = $this->conn->prepare($query);
 
@@ -54,6 +54,8 @@ class Account {
         $success = $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $rows: [];
+
+        //return $this->id;
     }
 }
 
