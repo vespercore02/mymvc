@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * 
+ * @package Database
+ * 
+ * @var $host for the host
+ * @var $db_name for the database name
+ * @var $username for database user access
+ * @var $password for the database user access password
+ * @var $conn for the reply database connection
+ * 
+ * @param getConnection to have connection to database
+ */
+
 class Database{
   
     // specify your own database credentials

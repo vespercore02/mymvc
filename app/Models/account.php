@@ -1,5 +1,19 @@
 <?php
 
+/**
+ * @package Account 
+ * @var $conn for the database connection
+ * @var $table_name is for the name of the table
+ * 
+ * @var $id for the id of the search account
+ * @var $username is for the register username
+ * @var $password is the desire password
+ * @var $location is the location of the user
+ * 
+ * @param create to register $username, $password and $location return true or false
+ * @param view to view and get registered id information
+ */
+
 class Account {
 
     private $conn;
@@ -54,8 +68,6 @@ class Account {
         $success = $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $rows: [];
-
-        //return $this->id;
     }
 }
 

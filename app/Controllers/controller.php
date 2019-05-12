@@ -57,9 +57,6 @@ class Controller {
 
         require 'views/'.$view.'.php';
         
-
-
-
     }
 
    
