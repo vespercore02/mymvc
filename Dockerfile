@@ -1,9 +1,9 @@
-FROM php:7.3-apache
+FROM php:7.2-apache
 
 COPY ./app /var/www/html
 
 RUN apt-get update \
- && apt-get install -y git zlib1g-dev \
+ && apt-get install -y git zlib1g-dev  \
  && docker-php-ext-install pdo pdo_mysql \
  && a2enmod rewrite \
  && curl -sS https://getcomposer.org/installer \
