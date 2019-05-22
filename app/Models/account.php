@@ -1,61 +1,70 @@
-<?php
+<?php 
 
-class Account {
+/**
+ * 
+ * @var id for id of account
+ * @var $username for username of account
+ * @var $password for password of account
+ * @var $location for location of account
+ * @var $table for table where account information can get
+ */
 
-    private $conn;
-    private $table_name = "account";
-    
-    public $id;
-    public $username;
-    public $password;
-    public $location;
+class Account extends Database
+{
+    public static $id;
+    public static $username;
+    public static $password;
+    public static $location;
+    public static $table = 'account';
 
-    public function __construct($db){
-        $this->conn = $db;
-    }
+    /**
+     * @param function checkAccount will check if username is available or not before registration
+     */
 
-    function create(){
-
-        $query = "INSERT INTO 
-                    ". $this->table_name ."
-                   SET 
-                    username=:username, password=:password, location=:location";
-
-        $stmt = $this->conn->prepare($query);
-
-        $this->username=htmlspecialchars(strip_tags($this->username));
-        $this->password=htmlspecialchars(strip_tags($this->password));
-        $this->location=htmlspecialchars(strip_tags($this->location));
-
-        $stmt->bindParam(":username", $this->username);
-        $stmt->bindParam(":password", $this->password);
-        $stmt->bindParam(":location", $this->location);
-
-        if($stmt->execute()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public function view()
+    public static function checkAccount()
     {
-        $query = "Select * from 
-                    ". $this->table_name ."
-                   where 
-                    id=:id";
+        $query = "Select username from ". self::$table ." where 
+                username = :username";
+        $statement = self::connect()->prepare($query);
+        $statement->bindparam(':username',self::$username);
+        $statement->execute();
 
-        $stmt = $this->conn->prepare($query);
+        $data = $statement->rowCount();
 
-        $this->id=htmlspecialchars(strip_tags($this->id));
+        return $data;
+        
+    }
 
-        $stmt->bindParam(":id", $this->id);
+    /**
+     * @return Array
+     * 
+     */
+    public static function viewAccounts()
+    {
+        $query = "Select * from account ";
+        $statement = self::connect()->prepare($query);
+        $success = $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $rows: 0;
+    }
 
-        $success = $stmt->execute();
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return ($success) ? $rows: [];
+    /**
+     * 
+     *
+     * @return Array of account id information
+     */
+    public static function getId()
+    {
+        $query      = "Select * from account where account_id = :account_id ";
+        $statement  = self::connect()->prepare($query);
+        $statement->bindparam(':account_id',self::$id);
+
+        $success    = $statement->execute();
+        $rows       = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $rows: 0;
     }
 }
+
 
 
 ?>
