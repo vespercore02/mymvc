@@ -1,65 +1,27 @@
 <?php
 
 /**
- * @package construct db connection from Database
  * 
- * @param $view to look up on the views folder
- * @param $data to where data reference to look on the database
+ * @param $view to look up on the file Views and Models folder
  * 
- * @param Account view() to echo the data from account model
  * 
  */
-
-class Controller {
-
-    private $db;
-
-    public function __construct( $db) {
-        $this->db = $db;
-    }
+class Controller 
+{
     
-    public function loadView($view, $data){
+    public function loadView($view)
+    {
+        # code...
 
-        $file = 'views/'.$view.'.php';
-
-        //var_dump($conn);
-
-        if (file_exists($file)) {
-            # code...
-
-            //$get = new Account($this->db);
-            
-            if (!empty($data)) {
-                # code...
-                
-                switch ($view) {
-                    case 'Account':
-                        # code...
-
-                        $account = new Account($this->db);
-                        $account->id = $data;
-                        $account->view();
-
-                        break;
-
-                    default:
-                        # code...
-                        break;
-                }
-            }
-
-            
-        }else {
-            # code...
-
-            $view = "error";
-        }
-
-        require 'views/'.$view.'.php';
-        
+        require 'Views/'.$view.'.php';
     }
 
-   
+    public function loadModel($view)
+    {
+        # code...
+
+        require 'Models/'.$view.'.php';
+    }
 }
 
 

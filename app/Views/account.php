@@ -1,13 +1,27 @@
+<table>
+    <thead>
+        <tr>
+            <th>Account ID</th>
+            <th>Username</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
 
-<?php 
+        foreach (Account::viewAccounts() as  $value) {
+            # code...
+            ?>
+            <tr>
+                <td>
+                    <a href="Account/<?php echo $value['account_id']; ?>"><?php echo $value['account_id']; ?></a>
+                </td>
+                <td>
+                    <?php echo $value['username']; ?>
+                </td>
+            </tr>
+        <?php
+    }
 
-foreach ($account->view() as $value) {
-    # code...
     ?>
-    This is account id <?php echo $value['account_id']; ?> <br>
-    This is password <?php echo $value['password']; ?> <br>
-    This is location <?php echo $value['location']; ?> <br>
-<?php
-}
-
-?>
+    </tbody>
+</table>

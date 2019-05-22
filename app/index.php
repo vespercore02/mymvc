@@ -1,22 +1,28 @@
-<?php
+<?php 
 
-require __DIR__ . '/vendor/autoload.php';
+require 'route.php';
 
-require 'router.php';
-require 'Resources/config/config.php';
-require 'Controllers/controller.php';
-require 'Models/account.php';
+function __autoload($class)
+{
+    
+    if (file_exists('Resources/'.$class.'.php')) {
+        # code...
+        require_once 'Resources/'.$class.'.php';
 
-$database = new Database();
-$db = $database->getConnection();
+    }elseif (file_exists('Controllers/'.$class.'.php')) {
+        
+        require_once 'Controllers/'.$class.'.php';
 
-/**
- * 
- * call Router
- * 
- */
-$router = new Router($db);
-$router->index();
-
+        if (file_exists('Models/'.$class.'.php')) {
+            # code...
+            require_once 'Models/'.$class.'.php';
+    
+        }
+        
+    }elseif(file_exists('Models/'.$class.'.php')){
+        require_once 'Models/'.$class.'.php';
+    }
+    
+}
 
 ?>
