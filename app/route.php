@@ -2,25 +2,25 @@
 
 $route = new Route($_SERVER['REQUEST_URI']);
 
-$route->getPage('GET', '/route/', function(){
+$route->getPage('GET', '/mymvc/', function(){
 
     Controller::loadView('Home');
 
 });
 
-$route->getPage('GET', '/route/AboutUs', function(){
+$route->getPage('GET', '/mymvc/AboutUs', function(){
     
     Controller::loadView('AboutUs');
 
 });
 
-$route->getPage('GET', "/route/Account", function(){
+$route->getPage('GET', "/mymvc/Account", function(){
     
     Controller::loadView('Account');
     
 });
 
-$route->getPage('GET', "/route/Account/{id}", function($id){
+$route->getPage('GET', "/mymvc/Account/{id}", function($id){
 
     Account::$id = $id;
 
@@ -28,13 +28,13 @@ $route->getPage('GET', "/route/Account/{id}", function($id){
     
 });
 
-$route->getPage('GET', '/route/Forms', function(){
+$route->getPage('GET', '/mymvc/Forms', function(){
     
     Controller::loadView('Forms');
 
 });
 
-$route->getPage('POST', '/route/Forms', function(){
+$route->getPage('POST', '/mymvc/Forms', function(){
     
     Controller::loadModel('Forms');
     Forms::$username = $_POST['username'];
