@@ -1,70 +1,72 @@
 <?php 
 
 class Route{
+
+    public $request_uri     = "";
+    public $request_method  = "";
+
+    public function __construct($uri)
+    {
+        $this->request_uri = $uri;
+        $this->request_method = $_SERVER['REQUEST_METHOD'];
+    }
     
-    public static function getPage($route, $function)
+    public function getPage($method, $route, $function)
     {
         
-       if (self::checkRoute($route) == true) {
-            //echo self::checkRoute($route);
-            $url_exe = self::checkRoute($route);
-            call_user_func($function, $url_exe);
-       }
+        if ($this->checkRoute($route)) {
+            if ($this->checkMethod($method)) {
+                call_user_func($function, $this->checkRoute($route));
+            }
+        }
+       
     }
 
-    public static function postPage($route, $function)
+    public function checkRoute($route)
     {
-        if (isset($_POST['submit'])) {
+        $uri = $this->request_uri;
 
-            if (self::checkRoute($route)) {
-                //echo self::checkRoute($route);
-                $url_exe = self::checkRoute($route);
-                call_user_func($function, $url_exe);
-           }
-        }
-    }
-
-    public function checkRoute($route) 
-    {
-        if (empty( $_GET['url'])) {
-            $url = "index";
-        }else{
-            $url = $_GET['url'];
-        }
-
-        if ($route == $url) {
+        if ($route == $uri) {
 
             return true;
 
-        }else{
+        }else {
             
-            $url = rtrim($url,'/');
-            $url = explode('/', $url);
-            
-            $route = rtrim($route,'/');
-            $route = explode('/', $route);
+            $route  = rtrim($route,'/');
+            $route  = explode("/", $route);
 
-            if (sizeof($url) == sizeof($route)) {
-            
-                if ($route[0] == $url[0]) {
+            $uri    = rtrim($uri,'/');
+            $uri    = explode("/", $uri);
+
+            if (count($route) == count($uri)) {
+                
+                if ($route[2] == $uri[2]) {
                     
                     $number = count($route)-1;
                     
-                    $id = $url["$number"];
+                    $id = $uri["$number"];
     
                     return $id;
 
-
-                }elseif ($route[0] != $url[0]) {
-                    # code...
+                }elseif ($route[2] != $uri[2]) {
 
                    return false;
                     
                 }
-                
             }
+
         }
     }
+
+    public function checkMethod($method)
+    {
+        if ($method == $this->request_method) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 }
 
 
