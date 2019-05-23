@@ -1,6 +1,7 @@
 <?php 
 
-class Route{
+class Route
+{
 
     public $request_uri     = "";
     public $request_method  = "";
@@ -11,6 +12,15 @@ class Route{
         $this->request_method = $_SERVER['REQUEST_METHOD'];
     }
     
+    /**
+     * getPage
+     *
+     * @param  $method of request page
+     * @param  $route of the file
+     * @param  $function of the page
+     *
+     * @return if all true it will call the call_user_func
+     */
     public function getPage($method, $route, $function)
     {
         
@@ -22,6 +32,13 @@ class Route{
        
     }
 
+    /**
+     * checkRoute
+     *
+     * @param  mixed $route of the file
+     *
+     * @return void
+     */
     public function checkRoute($route)
     {
         $uri = $this->request_uri;
@@ -58,6 +75,13 @@ class Route{
         }
     }
 
+    /**
+     * checkMethod
+     *
+     * @param  mixed $method of request page
+     *
+     * @return void
+     */
     public function checkMethod($method)
     {
         if ($method == $this->request_method) {

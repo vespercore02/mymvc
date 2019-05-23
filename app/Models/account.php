@@ -18,9 +18,10 @@ class Account extends Database
     public static $table = 'account';
 
     /**
-     * @param function checkAccount will check if username is available or not before registration
+     * checkAccount
+     *
+     * @return if account if already exist
      */
-
     public static function checkAccount()
     {
         $query = "Select username from ". self::$table ." where 
@@ -36,8 +37,9 @@ class Account extends Database
     }
 
     /**
-     * @return Array
-     * 
+     * viewAccounts
+     *
+     * @return table informations
      */
     public static function viewAccounts()
     {
@@ -48,10 +50,11 @@ class Account extends Database
         return ($success) ? $rows: 0;
     }
 
+    
     /**
-     * 
+     * getId
      *
-     * @return Array of account id information
+     * @return return information of the account_id
      */
     public static function getId()
     {

@@ -16,10 +16,11 @@ class Forms extends Database
     public static $location;
     public static $table = 'account';
 
+    
     /**
-     * @param function addAccount for registration of account to table
+     * addAccount
      *
-     * @return lastInsertedId
+     * @return lastinsertID of registered account;
      */
     public static function addAccount()
     {

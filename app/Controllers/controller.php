@@ -9,6 +9,13 @@
 class Controller 
 {
     
+    /**
+     * loadView
+     *
+     * @param $view file name of view for Views folder
+     *
+     * @return void
+     */
     public function loadView($view)
     {
         # code...
@@ -16,6 +23,13 @@ class Controller
         require 'Views/'.$view.'.php';
     }
 
+    /**
+     * loadModel
+     *
+     * @param  $view file name of view for Models folder
+     *
+     * @return void
+     */
     public function loadModel($view)
     {
         # code...
