@@ -1,5 +1,6 @@
-$route = new Route($_SERVER['REQUEST_URI']);
+<?php
 
+$route = new Route($_SERVER['REQUEST_URI']);
 
 $route->getPage('GET', '/route/', function(){
 
@@ -18,6 +19,7 @@ $route->getPage('GET', "/route/Account", function(){
     Controller::loadView('Account');
     
 });
+
 $route->getPage('GET', "/route/Account/{id}", function($id){
 
     Account::$id = $id;
@@ -50,3 +52,5 @@ $route->getPage('POST', '/route/Forms', function(){
     }
     
 });
+
+?>
